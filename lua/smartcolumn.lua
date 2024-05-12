@@ -42,6 +42,11 @@ local function exceed(buf, win, min_colorcolumn)
 end
 
 local function update()
+   local file_size = vim.fn.getfsize(vim.fn.expand('%'))
+    if file_size > 1024 * 1024 then
+        return
+    end
+
    local buf_filetype = vim.api.nvim_buf_get_option(0, "filetype")
    local colorcolumns
 
